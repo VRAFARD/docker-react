@@ -1,13 +1,12 @@
-dist: focal
-language: minimal
+sudo : required
+language: generic
 
 services:
   - docker
 
 before_install:
-  # build using Dockerfile.dev; image name all lowercase
-  - docker build -t docker-react-f -f Dockerfile.dev .
+  - docker build -t docker-react-f Dockerfile.dev .
+
 
 script:
-  # run tests non-interactively; CI=true prevents watch mode
-  - docker run --rm -e CI=true docker-react-f npm test -- --watchAll=false
+  - docker run -e CI=true --rm docker-react-f npm test
