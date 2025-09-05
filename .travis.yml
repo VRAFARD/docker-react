@@ -5,8 +5,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-react-f Dockerfile.dev .
+  - docker build -t VRAFARD/docker-react-f Dockerfile.dev .
 
 
 script:
-  - docker run -e CI=true  docker-react-f npm test
+  - docker run -e CI=true  VRAFARD/docker-react-f npm test
