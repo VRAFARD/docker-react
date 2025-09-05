@@ -9,4 +9,4 @@ before_install:
 
 
 script:
-  - docker run -e CI=true --rm docker-react-f npm test
+  - docker run -e CI=true  docker-react-f npm test
