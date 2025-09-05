@@ -1,12 +1,13 @@
-sudo : required
-language: node.js
+dist: focal
+language: minimal
 
 services:
   - docker
 
 before_install:
-  - docker build -t VRAFARD/docker-react-f Dockerfile.dev .
-
+  # build using Dockerfile.dev; image name all lowercase
+  - docker build -t docker-react-f -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true --rm VRAFARD/docker-react-f npm test
+  # run tests non-interactively; CI=true prevents watch mode
+  - docker run --rm -e CI=true docker-react-f npm test -- --watchAll=false
